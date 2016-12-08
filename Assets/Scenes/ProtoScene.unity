@@ -1660,7 +1660,7 @@ Transform:
   - {fileID: 758506708}
   - {fileID: 1790554728}
   m_Father: {fileID: 869324226}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!23 &348896906
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2945,7 +2945,7 @@ Transform:
   - {fileID: 1954374748}
   - {fileID: 260950086}
   m_Father: {fileID: 869324226}
-  m_RootOrder: 7
+  m_RootOrder: 4
 --- !u!23 &818066170
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3356,11 +3356,11 @@ Transform:
   - {fileID: 162050643}
   - {fileID: 279773573}
   - {fileID: 1426676094}
+  - {fileID: 818066169}
   - {fileID: 664276369}
   - {fileID: 642116793}
-  - {fileID: 215859360}
-  - {fileID: 818066169}
   - {fileID: 348896905}
+  - {fileID: 215859360}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!1 &876529127
@@ -5370,7 +5370,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ee25db07731fa06428aeecfb1e2dec62, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
