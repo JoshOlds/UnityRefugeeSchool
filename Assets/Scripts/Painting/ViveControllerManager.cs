@@ -16,7 +16,6 @@ public class ViveControllerManager : MonoBehaviour
     [SerializeField]
     private bool Ready; //Are both controllers found?
 
-    private Valve.VR.EVRButtonId triggerButton = Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger;
 
     void Awake()
     {
@@ -84,9 +83,6 @@ public class ViveControllerManager : MonoBehaviour
     public bool GetTouchPadPress(Valve.VR.EVRButtonId buttonId, ViveControllerManager.Controller controller, float sensitivity)
     {
         sensitivity = Mathf.Clamp(sensitivity, 0.0f, 1.0f);
-        SteamVR_Controller.Device currentController;
-        if (controller == ViveControllerManager.Controller.LeftViveController) currentController = leftController;
-        else currentController = rightController;
 
         if (!GetPress(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad, controller)) return false; //No button pressed!
 
