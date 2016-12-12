@@ -4,9 +4,11 @@ using System.Collections;
 public class PaintCollider : MonoBehaviour
 {
 
-    //Attach me to a sphere to paint with me!
+    //This component will allow you to paint any object that is 
+    //paintable with colors, or materials
 
     public Color MyColor;
+    public Material MyMaterial;
 
     private MeshRenderer MyMeshRenderer;
     private Rigidbody MyRigidBody;
@@ -17,7 +19,6 @@ public class PaintCollider : MonoBehaviour
         MyRigidBody = GetComponent<Rigidbody>();
         if (MyRigidBody == null) Debug.LogError("PaintCollider does not have a rigidbody. It will not be able to collide!");
         MyMeshRenderer = GetComponent<MeshRenderer>();
-        if(MyMeshRenderer != null) MyMeshRenderer.material.color = MyColor;
     }
 
     // Update is called once per frame
@@ -37,11 +38,24 @@ public class PaintCollider : MonoBehaviour
                 paintable.Paint(MyColor);
             }
 
+            if (mb is IMaterialPaintable)
+            {
+                IMaterialPaintable paintable = (IMaterialPaintable)mb;
+                paintable.Paint(MyMaterial);
+            }
+
             if (mb is IColorProvider)
             {
-                IColorProvider colorProvider = (IColorProvider)mb;
-                MyColor = colorProvider.GetColor();
+                IColorProvider provider = (IColorProvider)mb;
+                MyColor = provider.GetColor();
                 MyMeshRenderer.material.color = MyColor;
+            }
+
+            if (mb is IMaterialProvider)
+            {
+                IMaterialProvider provider = (IMaterialProvider)mb;
+                MyMaterial = provider.GetMaterial();
+                MyMeshRenderer.material = MyMaterial;
             }
         }
     }

@@ -18,6 +18,7 @@ public class EaselGenerator : MonoBehaviour {
     public float PixelSize; //Size of every pixel
     public float Width; //Pixels wide to generate
     public float Height; //Pixels high to generate
+    public Material DefaultMaterial;
 
     private Vector3 PlanePixelScale;
     private float PlaneScale = 0.1f; //Planes are inherently 10x larger
@@ -41,12 +42,20 @@ public class EaselGenerator : MonoBehaviour {
             {
                 GameObject pixelPlane = GameObject.CreatePrimitive(PrimitiveType.Plane); //Create new plane
                 Vector3 positionVector = new Vector3((PixelSize * x), (PixelSize * y), 0); //Size
-                pixelPlane.AddComponent<Paintable>();
                 pixelPlane.transform.localScale = PlanePixelScale;
                 pixelPlane.transform.SetParent(this.transform);
                 pixelPlane.transform.position = ParentTransform.position;
                 pixelPlane.transform.Translate(positionVector);
                 pixelPlane.transform.localRotation = Quaternion.Euler(90, 0, 0);
+
+                pixelPlane.AddComponent<MaterialPaintable>();
+                MeshRenderer MyRenderer = pixelPlane.GetComponent<MeshRenderer>();
+                MyRenderer.material = DefaultMaterial;
+                MyRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                MyRenderer.receiveShadows = true;
+                MyRenderer.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
+                MyRenderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
+                MyRenderer.motionVectors = false;
             }
         }
     }
