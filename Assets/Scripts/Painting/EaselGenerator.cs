@@ -43,10 +43,8 @@ public class EaselGenerator : MonoBehaviour {
             for(int y = 0; y < Height; y++)
             {
                 GameObject pixelPlane = GameObject.CreatePrimitive(PrimitiveType.Plane); //Create new plane
-               // float XMove = Mathf.Cos()
                 Vector3 positionVector = new Vector3((PixelSize * x), (PixelSize * y), 0); //Vector for positioning
                 pixelPlane.transform.localScale = PlanePixelScale;
-                //pixelPlane.transform.SetParent(this.transform);
                 pixelPlane.transform.position = this.transform.position;
                 pixelPlane.transform.rotation = this.transform.rotation;
                 pixelPlane.transform.Translate(positionVector, Space.Self);
@@ -57,7 +55,7 @@ public class EaselGenerator : MonoBehaviour {
                 MeshRenderer MyRenderer = pixelPlane.GetComponent<MeshRenderer>();
                 MyRenderer.material = DefaultMaterial;
                 MyRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-                MyRenderer.receiveShadows = true;
+                MyRenderer.receiveShadows = false;
                 MyRenderer.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
                 MyRenderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
                 MyRenderer.motionVectors = false;
