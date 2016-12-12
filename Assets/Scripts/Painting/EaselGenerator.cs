@@ -36,17 +36,22 @@ public class EaselGenerator : MonoBehaviour {
 
     private void generatePlaneEasel()
     {
+        GameObject EaselParent = new GameObject();
+        EaselParent.name = "EaselParent";
         for(int x = 0; x < Width; x++)
         {
             for(int y = 0; y < Height; y++)
             {
                 GameObject pixelPlane = GameObject.CreatePrimitive(PrimitiveType.Plane); //Create new plane
-                Vector3 positionVector = new Vector3((PixelSize * x), (PixelSize * y), 0); //Size
+               // float XMove = Mathf.Cos()
+                Vector3 positionVector = new Vector3((PixelSize * x), (PixelSize * y), 0); //Vector for positioning
                 pixelPlane.transform.localScale = PlanePixelScale;
-                pixelPlane.transform.SetParent(this.transform);
-                pixelPlane.transform.position = ParentTransform.position;
-                pixelPlane.transform.Translate(positionVector);
-                pixelPlane.transform.localRotation = Quaternion.Euler(90, 0, 0);
+                //pixelPlane.transform.SetParent(this.transform);
+                pixelPlane.transform.position = this.transform.position;
+                pixelPlane.transform.rotation = this.transform.rotation;
+                pixelPlane.transform.Translate(positionVector, Space.Self);
+                pixelPlane.transform.localRotation = Quaternion.Euler(pixelPlane.transform.localRotation.eulerAngles.x + 90.0f, pixelPlane.transform.localRotation.eulerAngles.y, pixelPlane.transform.localRotation.eulerAngles.z); //Face planes towards Z axis
+                pixelPlane.transform.SetParent(EaselParent.transform);
 
                 pixelPlane.AddComponent<MaterialPaintable>();
                 MeshRenderer MyRenderer = pixelPlane.GetComponent<MeshRenderer>();
