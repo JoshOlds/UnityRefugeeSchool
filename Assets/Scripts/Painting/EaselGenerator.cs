@@ -19,6 +19,7 @@ public class EaselGenerator : MonoBehaviour {
     public float Width; //Pixels wide to generate
     public float Height; //Pixels high to generate
     public Material DefaultMaterial;
+    public string Layer;
 
     private Vector3 PlanePixelScale;
     private float PlaneScale = 0.1f; //Planes are inherently 10x larger
@@ -37,6 +38,7 @@ public class EaselGenerator : MonoBehaviour {
     private void generatePlaneEasel()
     {
         GameObject EaselParent = new GameObject();
+        EaselParent.layer = LayerMask.NameToLayer(Layer);
         EaselParent.name = "EaselParent";
         for(int x = 0; x < Width; x++)
         {
@@ -59,6 +61,7 @@ public class EaselGenerator : MonoBehaviour {
                 MyRenderer.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
                 MyRenderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
                 MyRenderer.motionVectors = false;
+                pixelPlane.layer = LayerMask.NameToLayer(Layer);
             }
         }
     }
