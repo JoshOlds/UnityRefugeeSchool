@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 public class ViveControllerManager : MonoBehaviour
 {
     public enum Controller { LeftViveController, RightViveController};
@@ -51,6 +52,15 @@ public class ViveControllerManager : MonoBehaviour
     public bool IsReady()
     {
         return Ready;
+    }
+
+    public bool GetPressDown(Valve.VR.EVRButtonId buttonId, ViveControllerManager.Controller controller)
+    {
+        SteamVR_Controller.Device currentController;
+        if (controller == ViveControllerManager.Controller.LeftViveController) currentController = leftController;
+        else currentController = rightController;
+
+        return currentController.GetPressDown(buttonId);
     }
 
     public bool GetPress(Valve.VR.EVRButtonId buttonId, ViveControllerManager.Controller controller)
