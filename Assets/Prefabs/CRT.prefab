@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012229298452}
-  - 205: {fileID: 205000012340462120}
   m_Layer: 0
   m_Name: CRT
   m_TagString: Untagged
@@ -174,24 +173,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014233438626}
   m_Mesh: {fileID: 4300002, guid: f54e6fa704a12b34697bceaf43822166, type: 3}
---- !u!205 &205000012340462120
-LODGroup:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014215812056}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.000099897385, y: 0.2929229, z: 0.00031721592}
-  m_Size: 0.62421334
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LODs:
-  - screenRelativeHeight: 0.07475346
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 23000013706646516}
-  - screenRelativeHeight: 0.01
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 23000010059548924}
-  m_Enabled: 1
