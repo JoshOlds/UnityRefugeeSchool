@@ -41,7 +41,7 @@ public class ToneAdjuster : MonoBehaviour
         sound.pitch = startingPitch;
         if (increaseTone) sound.pitch += (sound.pitch * pitch) - sound.pitch;
         else sound.pitch -= (sound.pitch * pitch) - sound.pitch;
-        Debug.Log(sound.pitch);
+        //Debug.Log(sound.pitch);
         sound.Play();
     }
 
